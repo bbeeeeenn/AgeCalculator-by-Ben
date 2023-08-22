@@ -180,3 +180,10 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: translateY(-50%) scale(1.1);
    }
 }
+
+.attribution {
+   position: fixed;
+   bottom: 5px;
+   left: 50%;
+   transform: translateX(-50%);
+}
