@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,400;1,800&display=swap");
+
+*,
+*::before,
+*::after {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   height: 100vh;
+   background-color: hsl(0, 0%, 86%);
+}
+
+hr {
+   border-color: hsl(0, 0%, 86%);
+   border-style: solid;
+}
+
+.container {
+   --container-padding-tb: 1.75rem;
+   --container-padding-lr: clamp(1.5rem, 5vw, 3rem);
+   --input-section-height: 100px;
+   --input-section-margin: 3rem;
+   background-color: white;
+   width: clamp(330px, 80vw, 600px);
+   height: 475px;
+   border-radius: 20px 20px 100px 20px;
+   padding: var(--container-padding-tb) var(--container-padding-lr);
+
+   position: relative;
+}
+
+.input-section {
+   display: flex;
+   justify-content: space-between;
+   height: var(--input-section-height);
+   width: 100%;
+   max-width: 370px;
+   align-items: center;
+   margin-bottom: var(--input-section-margin);
+}
+
+.input-section>div {
+   position: relative;
+   width: clamp(80px, 20vw, 110px);
+}
+
+.dmy-label {
+   font-family: "Poppins", sans-serif;
+   font-weight: bold;
+   letter-spacing: 3px;
+   font-size: 0.7rem;
+   margin-bottom: 5px;
+   color: hsl(0, 1%, 44%);
+}
+
+.dmy-input::placeholder,
+.dmy-input {
+   font-family: "Poppins";
+   font-weight: 900;
+   color: hsl(0, 1%, 44%);
+   font-size: 1.3rem;
+}
+
+.dmy-input {
+   padding: 0 0 0 0.8rem;
+   height: 3.5rem;
+   width: 100%;
+   border-radius: 5px;
+   border: 1px solid hsl(0, 0%, 86%);
+   color: hsl(0, 0%, 8%);
+   outline: none;
+}
+
+.dmy-input.error {
+   border: 1px solid hsl(0, 100%, 67%);
+}
+
+.dmy-label.error {
+   color: hsl(0, 100%, 67%);
+}
+
+.error-msg {
+   font-family: 'Poppins', sans-serif;
+   font-style: italic;
+   color: hsl(0, 100%, 67%);
+   font-size: 10px;
+   line-height: 0.8rem;
+
+   position: absolute;
+   transform: translateY(2px);
+}
+
+.dmy-input:focus {
+   border: 1.5px solid hsl(259, 100%, 65%);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+.output-section {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-top: 3rem;
+}
+
+.dmy-output {
+   display: flex;
+   flex-flow: row nowrap;
+}
+
+.dmy-output span {
+   font-family: 'Poppins', sans-serif;
+   font-size: clamp(3.3rem, 10vw, 5rem);
+   font-weight: 900;
+   font-style: italic;
+   line-height: clamp(4.1rem, 10vw, 5rem);
+}
+
+.dmy-output span:first-of-type {
+   color: hsl(259, 100%, 65%);
+}
+
+.icon {
+   background: url('assets/images/icon-arrow.svg');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: 2rem;
+   position: absolute;
+   height: 4rem;
+   aspect-ratio: 1/1;
+   background-color: hsl(259, 100%, 65%);
+   border-radius: 50%;
+
+   top: calc(var(--container-padding-tb) + var(--input-section-height) + var(--input-section-margin));
+   right: 50%;
+   transform: translate(50%, -50%);
+
+   transition: 0.3s;
+}
+
+.icon:hover {
+   transform: translate(50%, -50%) scale(1.2);
+   transform-origin: center;
+   background-color: black;
+}
+
+
+@media (min-width: 750px) {
+   .container {
+      --input-section-margin: 2rem;
+      border-radius: 20px 20px 150px 20px;
+   }
+
+   .dmy-input {
+      height: 3.3rem;
+   }
+
+   .output-section {
+      margin-top: 2rem;
+   }
+
+   .icon {
+      height: 5rem;
+      right: var(--container-padding-lr);
+      transform: translateY(-50%);
+   }
+
+   .icon:hover {
+      transform: translateY(-50%) scale(1.1);
+   }
+}
