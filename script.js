@@ -27,6 +27,8 @@ function submit() {
 	const monthInput = document.getElementById("monthInput").value;
 	const yearInput = document.getElementById("yearInput").value;
 	const today = new Date();
+	const birthday = new Date(yearInput, monthInput - 1, dayInput);
+	birthday.setHours(8);
 	// Validator
 	if (
 		dayInput > 31 ||
@@ -34,7 +36,8 @@ function submit() {
 		yearInput > today.getFullYear() ||
 		dayInput == "" ||
 		monthInput == "" ||
-		yearInput == ""
+		yearInput == "" ||
+		birthday > today
 	) {
 		if (dayInput == "") {
 			dayError.innerText = "This field is required.";
@@ -68,6 +71,19 @@ function submit() {
 			yearError.innerText = "";
 			indicateError(2, false);
 		}
+
+		if (birthday > today) {
+			labels.forEach((e) => {
+				e.classList.add("error");
+			});
+			inputs.forEach((e) => {
+				e.classList.add("error");
+			});
+			errorMsg.forEach((e) => {
+				e.innerText = "";
+			});
+			errorMsg[0].innerText = "Must be in the past.";
+		}
 		// Function
 	} else {
 		// Check if valid date
@@ -80,8 +96,6 @@ function submit() {
 			);
 		}
 		if (isValidDate(yearInput, monthInput, dayInput)) {
-			const birthday = new Date(yearInput, monthInput - 1, dayInput);
-			birthday.setHours(8);
 			const result = new Date(today - birthday);
 			const yr = result.getFullYear() - 1970;
 			const m = result.getMonth();
